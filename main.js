@@ -98,6 +98,23 @@ const sum2 = inventors.reduce(function (accumulator, inventor) {
 console.log(sum2)
 // 5. Sort the inventors by years lived
 
+const calculateAge = inventor => {
+    const age = inventor.passed - inventor.year;
+    return { ...inventor, age: age };
+};
+
+// w powyższej funkcji rozsmarowujemy każdy obiekt inventor, żeby po przecinku wsadzić do niego nową parę klucz wartość age: age
+
+const inventorsWithAge = inventors.map(calculateAge);
+
+console.log(inventorsWithAge);
+
+const sortInventors = (a,b) => {
+	return a.age - b.age
+}
+
+console.log(inventorsWithAge.sort(sortInventors));
+
 // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
 // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
 
