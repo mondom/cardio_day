@@ -84,6 +84,7 @@ console.log(inventors.map(showFullNames))
 // 3. Sort the inventors by birthdate, oldest to youngest
 
 const sortAge = (a, b) => {
+	
 	return a.year - b.year
 }
 
@@ -92,46 +93,46 @@ console.table(inventors.sort(sortAge))
 // Array.prototype.reduce()
 // 4. How many years did all the inventors live all together?
 
-const sum2 = inventors.reduce(function (accumulator, inventor) {
-	return accumulator + (inventor.passed - inventor.year)
-}, 0)
-console.log(sum2)
+// const sum2 = inventors.reduce(function (accumulator, inventor) {
+// 	return accumulator + (inventor.passed - inventor.year)
+// }, 0)
+// console.log(sum2)
 
-let totalYears = 0
+// let totalYears = 0
 
 //-----------------
 // to samo przy pomocy pęli for
 
-for (let i = 0; i < inventors.length; i++) {
-	totalYears = inventors[i].year
-}
-console.log(totalYears)
-// 5. Sort the inventors by years lived
-// moje rozwiązanie
-const calculateAge = inventor => {
-	const age = inventor.passed - inventor.year
-	return { ...inventor, age: age }
-}
+// for (let i = 0; i < inventors.length; i++) {
+// 	totalYears = inventors[i].year
+// }
+// console.log(totalYears)
+// // 5. Sort the inventors by years lived
+// // moje rozwiązanie
+// const calculateAge = inventor => {
+// 	const age = inventor.passed - inventor.year
+// 	return { ...inventor, age: age }
+// }
 
 // w powyższej funkcji rozsmarowujemy każdy obiekt inventor, żeby po przecinku wsadzić do niego nową parę klucz wartość age: age
 
-const inventorsWithAge = inventors.map(calculateAge)
+// const inventorsWithAge = inventors.map(calculateAge)
 
-const sortInventors = (a, b) => {
-	return a.age - b.age
-}
+// const sortInventors = (a, b) => {
+// 	return a.age - b.age
+// }
 
-console.log(inventorsWithAge.sort(sortInventors))
+// console.log(inventorsWithAge.sort(sortInventors))
 
 //rozwiązanie z kursu
 
-const oldest = inventors.sort(function (a, b) {
-	const lastGuy = a.passed - a.year
-	const nextGuy = b.passed - b.year
+// const oldest = inventors.sort(function (a, b) {
+// 	const lastGuy = a.passed - a.year
+// 	const nextGuy = b.passed - b.year
 
-	return lastGuy > nextGuy ? -1 : 1
-})
-console.table(oldest)
+// 	return lastGuy > nextGuy ? -1 : 1
+// })
+// console.table(oldest)
 
 //const oldest = inventors.sort(function (a, b) { ... }): Tworzy nową tablicę oldest, która jest wynikiem sortowania tablicy inventors. Sortowanie odbywa się na podstawie funkcji porównującej przekazanej jako argument dla metody sort(). Ta funkcja zostanie wykonana dla każdej pary elementów tablicy inventors.
 
@@ -186,27 +187,27 @@ const Boulevards = [
 	'Boulevard de la Zone',
 ]
 
-function checkBoulevards(boulevard) {
-	return boulevard.includes('de ')
-}
-console.log(Boulevards.filter(checkBoulevards))
+// function checkBoulevards(boulevard) {
+// 	return boulevard.includes('de ')
+// }
+// console.log(Boulevards.filter(checkBoulevards))
 
-// 7. sort Exercise
-// Sort the people alphabetically by last name
-//moje błędne rozwiązanie↓
-console.log(people.sort())
+// // 7. sort Exercise
+// // Sort the people alphabetically by last name
+// //moje błędne rozwiązanie↓
+// console.log(people.sort())
 
 //rozwiązanie z kursu↓
 
-const alpha = people.sort(function (lastOne, nextOne) {
-	const [aLast, aFirst] = lastOne.split(', ')
-	// [aLast, aFirst] = ...: Używając destrukturyzacji tablicy, wartości zwrócone przez split() są przypisywane odpowiednio do zmiennych aLast i aFirst. Pierwszy element tablicy (nazwisko) jest przypisywany do zmiennej aLast, a drugi element (imię) do zmiennej aFirst.
-	// W rezultacie po wykonaniu tej linii kodu, zmienna aLast przechowuje nazwisko danej osoby, a zmienna aFirst przechowuje jej imię. Ta technika jest często używana, gdy chcemy rozbić tablicę na pojedyncze wartości i przypisać je do zmiennych w jednym kroku.
-	const [bLast, bFirst] = nextOne.split(', ')
-	return aLast > bLast ? -1 : 1
-})
+// const alpha = people.sort(function (lastOne, nextOne) {
+// 	const [aLast, aFirst] = lastOne.split(', ')
+// 	// [aLast, aFirst] = ...: Używając destrukturyzacji tablicy, wartości zwrócone przez split() są przypisywane odpowiednio do zmiennych aLast i aFirst. Pierwszy element tablicy (nazwisko) jest przypisywany do zmiennej aLast, a drugi element (imię) do zmiennej aFirst.
+// 	// W rezultacie po wykonaniu tej linii kodu, zmienna aLast przechowuje nazwisko danej osoby, a zmienna aFirst przechowuje jej imię. Ta technika jest często używana, gdy chcemy rozbić tablicę na pojedyncze wartości i przypisać je do zmiennych w jednym kroku.
+// 	const [bLast, bFirst] = nextOne.split(', ')
+// 	return aLast > bLast ? -1 : 1
+// })
 
-console.log(alpha)
+// console.log(alpha)
 
 // Kod ten sortuje tablicę people alfabetycznie według nazwisk osób. Oto kroki wykonywane przez ten kod:
 
@@ -239,16 +240,16 @@ const data = [
 	'truck',
 ]
 
-const test = data.reduce(function (obj, item) {
-	console.log(item)
-	if (!obj[item]) {
-		obj[item] = 0
-	}
-	obj[item]++
-	return obj
-}, {})
+// const test = data.reduce(function (obj, item) {
+// 	console.log(item)
+// 	if (!obj[item]) {
+// 		obj[item] = 0
+// 	}
+// 	obj[item]++
+// 	return obj
+// }, {})
 
-console.log(test)
+// console.log(test)
 
 
 // Ten kod wykonuje operację redukcji na tablicy data, w której zlicza wystąpienia każdego unikalnego elementu.
@@ -261,3 +262,58 @@ console.log(test)
 // Następnie inkrementowana jest wartość właściwości obj[item], czyli zliczane jest wystąpienie danego elementu.
 // Na koniec iteracji, obiekt test zawiera liczbę wystąpień każdego unikalnego elementu tablicy data.
 // Wynikiem działania tego kodu będzie obiekt test, który będzie zawierał zliczone wystąpienia każdego unikalnego elementu tablicy data.
+
+// const test = arr.reduce(function (obj, fruit) {
+// 	return obj[fruit]
+// }, {})
+
+// console.log(test) 
+// dlaczego taki zapis zwraba błąd?
+
+// ChatGPT
+// Ten zapis zwraca błąd, ponieważ w funkcji reduce nie jest poprawnie obsługiwany obiekt obj. W każdej iteracji obj powinien być aktualizowany lub modyfikowany w zależności od wartości bieżącego elementu tablicy. Jednakże w powyższym kodzie obj[fruit] próbuje odwołać się do wartości obiektu obj za pomocą klucza fruit, ale na początku obj jest obiektem pustym {} i nie zawiera klucza odpowiadającego żadnemu z elementów tablicy. Spowoduje to błąd, ponieważ próbujemy odwołać się do nieistniejącego klucza.
+
+// Aby ten kod działał poprawnie, musimy zmienić podejście w funkcji reduce. Możemy zaktualizować lub modyfikować obiekt obj w zależności od wartości bieżącego elementu tablicy. Na przykład, możemy zliczyć ilość wystąpień każdego owocu w tablicy:
+
+// javascript
+// Copy code
+// const arr = [
+// 	'apple',
+// 	'apple',
+// 	'banana',
+// 	'strawberry',
+// 	'berry',
+// 	'kiwi',
+// 	'banana',
+// 	'apple',
+// 	'pomelo',
+// 	'berry',
+// 	'melon',
+// 	'melon',
+// 	'watermelon',
+// ]
+
+// const test = arr.reduce(function (obj, fruit) {
+// 	if (!obj[fruit]) {
+// 		obj[fruit] = 1;
+// 	} else {
+// 		obj[fruit]++;
+// 	}
+// 	return obj;
+// }, {});
+
+// console.log(test);
+// W wyniku otrzymamy obiekt, w którym klucze to unikalne owoce z tablicy, a wartości to liczba ich wystąpień:
+
+// javascript
+// Copy code
+// {
+// 	'apple': 3,
+// 	'banana': 2,
+// 	'strawberry': 1,
+// 	'berry': 2,
+// 	'kiwi': 1,
+// 	'pomelo': 1,
+// 	'melon': 2,
+// 	'watermelon': 1
+// }
